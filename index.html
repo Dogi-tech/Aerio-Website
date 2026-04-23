@@ -3,43 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aerio | Work flows together</title>
+  <title>Aerio</title>
+
   <style>
     :root {
       --orange: #ff6a00;
-      --dark: #111827;
-      --muted: #5f6673;
-      --line: #e7e9ee;
-      --soft: #f7f8fa;
-      --grey: #8e969e;
-      --deep-grey: #4e5967;
+      --dark: #121820;
+      --gray-dark: #4e5967;
+      --gray: #8e969e;
+      --gray-light: #e8eaed;
+      --text-soft: #667085;
+      --bg-soft: #f7f8fa;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       color: var(--dark);
       background: #fff;
-      line-height: 1.5;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
     .container {
-      max-width: 1180px;
+      width: min(1120px, calc(100% - 48px));
       margin: 0 auto;
-      padding: 0 28px;
     }
 
     header {
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(255,255,255,.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid #edf0f3;
     }
 
     .nav {
@@ -53,295 +61,217 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 750;
-      font-size: 22px;
+      font-weight: 800;
+      font-size: 24px;
       letter-spacing: -0.04em;
     }
 
-    .brand-mark {
+    .mini-logo {
       width: 34px;
       height: 34px;
-      border-radius: 10px;
       position: relative;
     }
 
-    .brand-dot {
+    .mini-logo span {
       position: absolute;
-      border-radius: 999px;
-      background: var(--grey);
+      border-radius: 50%;
+      display: block;
     }
-
-    .brand-dot.o { background: var(--orange); }
-    .brand-dot.d { background: var(--deep-grey); }
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 26px;
+      gap: 28px;
+      color: var(--text-soft);
       font-size: 14px;
-      color: var(--muted);
+      font-weight: 600;
     }
 
-    .btn {
+    .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       height: 46px;
       padding: 0 22px;
       border-radius: 999px;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 15px;
-      transition: .18s ease;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
       background: var(--orange);
-      color: white;
-      box-shadow: 0 10px 28px rgba(255,106,0,.22);
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(255, 106, 0, .22);
     }
 
-    .btn-primary:hover { transform: translateY(-1px); }
-
-    .btn-secondary {
-      border: 1px solid var(--line);
-      color: var(--dark);
+    .button.secondary {
       background: #fff;
+      color: var(--dark);
+      border: 1px solid #e5e7eb;
+      box-shadow: none;
     }
 
     .hero {
-      padding: 96px 0 86px;
-      overflow: hidden;
+      padding: 90px 0 88px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 54px;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 60px;
       align-items: center;
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
       color: var(--orange);
-      font-weight: 800;
       font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .1em;
       text-transform: uppercase;
-      letter-spacing: .08em;
       margin-bottom: 18px;
     }
 
     h1 {
-      font-size: clamp(46px, 6vw, 78px);
-      line-height: .96;
-      letter-spacing: -0.07em;
-      margin: 0 0 24px;
-      max-width: 780px;
+      margin: 0;
+      font-size: clamp(52px, 7vw, 84px);
+      line-height: .92;
+      letter-spacing: -0.075em;
     }
 
-    h1 span { color: var(--orange); }
+    h1 span {
+      color: var(--orange);
+      display: block;
+    }
 
-    .hero p {
-      font-size: 20px;
-      color: var(--muted);
-      max-width: 650px;
-      margin: 0 0 34px;
+    .hero-copy {
+      margin-top: 26px;
+      font-size: 22px;
+      line-height: 1.35;
+      color: var(--text-soft);
+      max-width: 660px;
     }
 
     .hero-actions {
       display: flex;
       gap: 14px;
+      margin-top: 34px;
       flex-wrap: wrap;
-      margin-bottom: 24px;
     }
 
-    .hero-note {
-      font-size: 14px;
-      color: #858b96;
+    .logo-card {
+      height: 460px;
+      border-radius: 34px;
+      border: 1px solid #eef0f3;
+      background: linear-gradient(180deg, #fff, #fafafa);
+      box-shadow: 0 30px 90px rgba(18,24,32,.08);
+      display: grid;
+      place-items: center;
     }
 
-    .logo-field {
+    .logo-mark {
+      width: 360px;
+      height: 360px;
       position: relative;
-      min-height: 500px;
-      border-radius: 36px;
-      background:
-        radial-gradient(circle at 70% 45%, rgba(255,106,0,.12), transparent 34%),
-        linear-gradient(180deg, #fff, #fafafa);
-      border: 1px solid var(--line);
-      box-shadow: 0 30px 90px rgba(17,24,39,.08);
-      overflow: hidden;
     }
 
-    .particle {
+    .dot {
       position: absolute;
-      border-radius: 999px;
-      background: var(--grey);
-      opacity: .95;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
     }
-
-    .particle.d { background: var(--deep-grey); }
-    .particle.o { background: var(--orange); }
 
     section {
-      padding: 88px 0;
+      padding: 86px 0;
     }
 
-    .section-soft {
-      background: var(--soft);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+    .soft {
+      background: var(--bg-soft);
+      border-top: 1px solid #edf0f3;
+      border-bottom: 1px solid #edf0f3;
     }
 
     .section-head {
-      max-width: 780px;
-      margin-bottom: 42px;
-    }
-
-    .section-head.center {
-      margin-left: auto;
-      margin-right: auto;
       text-align: center;
+      max-width: 780px;
+      margin: 0 auto 44px;
     }
 
     h2 {
-      font-size: clamp(34px, 4vw, 52px);
-      line-height: 1.02;
-      letter-spacing: -0.055em;
-      margin: 0 0 18px;
-    }
-
-    .section-head p {
-      font-size: 19px;
-      color: var(--muted);
       margin: 0;
+      font-size: clamp(38px, 5vw, 58px);
+      line-height: 1;
+      letter-spacing: -0.06em;
     }
 
-    .grid-3 {
+    .section-line {
+      margin-top: 18px;
+      font-size: 22px;
+      color: var(--text-soft);
+      line-height: 1.35;
+    }
+
+    .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 22px;
     }
 
     .card {
-      background: white;
-      border: 1px solid var(--line);
+      background: #fff;
+      border: 1px solid #edf0f3;
       border-radius: 26px;
-      padding: 28px;
-      box-shadow: 0 20px 50px rgba(17,24,39,.05);
+      padding: 30px;
+      min-height: 190px;
+      box-shadow: 0 18px 48px rgba(18,24,32,.04);
     }
 
-    .card h3 {
-      font-size: 22px;
-      letter-spacing: -0.035em;
-      margin: 0 0 10px;
-    }
-
-    .card p {
-      color: var(--muted);
-      margin: 0;
-      font-size: 16px;
-    }
-
-    .step-num {
+    .card-num {
       width: 38px;
       height: 38px;
+      display: grid;
+      place-items: center;
       border-radius: 12px;
       background: rgba(255,106,0,.1);
       color: var(--orange);
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      margin-bottom: 18px;
+      font-weight: 900;
+      margin-bottom: 22px;
     }
 
-    .split {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 54px;
-      align-items: start;
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      letter-spacing: -0.04em;
     }
 
-    .bullet-list {
-      display: grid;
-      gap: 14px;
+    .card p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 18px;
+      line-height: 1.4;
     }
 
-    .bullet {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      background: white;
-      border: 1px solid var(--line);
-      padding: 18px;
-      border-radius: 18px;
-    }
-
-    .check {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--orange);
-      color: white;
-      display: grid;
-      place-items: center;
-      font-size: 13px;
-      flex: 0 0 auto;
-      margin-top: 2px;
-    }
-
-    .bullet strong {
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .bullet span {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .cta {
-      text-align: center;
-      padding: 96px 0;
-    }
-
-    .cta-box {
+    .wide-panel {
       border-radius: 34px;
       background: var(--dark);
-      color: white;
-      padding: 64px 36px;
-      position: relative;
+      color: #fff;
+      padding: 70px 38px;
+      text-align: center;
       overflow: hidden;
+      position: relative;
     }
 
-    .cta-box:after {
-      content: "";
-      position: absolute;
-      right: -80px;
-      top: -80px;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: rgba(255,106,0,.22);
+    .wide-panel h2 {
+      color: #fff;
     }
 
-    .cta h2 {
-      color: white;
-      margin-bottom: 16px;
-    }
-
-    .cta p {
+    .wide-panel p {
+      margin: 18px auto 30px;
+      max-width: 680px;
       color: rgba(255,255,255,.72);
-      font-size: 19px;
-      max-width: 620px;
-      margin: 0 auto 28px;
+      font-size: 22px;
+      line-height: 1.35;
     }
 
     footer {
-      border-top: 1px solid var(--line);
       padding: 28px 0;
-      color: var(--muted);
+      border-top: 1px solid #edf0f3;
+      color: var(--text-soft);
       font-size: 14px;
     }
 
@@ -352,13 +282,31 @@
       flex-wrap: wrap;
     }
 
-    @media (max-width: 860px) {
-      .nav-links { display: none; }
-      .hero-grid, .split { grid-template-columns: 1fr; }
-      .logo-field { min-height: 380px; }
-      .grid-3 { grid-template-columns: 1fr; }
-      .hero { padding-top: 64px; }
-      section { padding: 64px 0; }
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-card {
+        height: 380px;
+      }
+
+      .logo-mark {
+        width: 300px;
+        height: 300px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 68px 0;
+      }
     }
   </style>
 </head>
@@ -366,13 +314,13 @@
 <body>
   <header>
     <div class="container nav">
-      <a href="#" class="brand">
-        <span class="brand-mark">
-          <span class="brand-dot" style="width:5px;height:5px;left:2px;top:16px"></span>
-          <span class="brand-dot d" style="width:8px;height:8px;left:12px;top:12px"></span>
-          <span class="brand-dot o" style="width:11px;height:11px;left:22px;top:9px"></span>
-          <span class="brand-dot o" style="width:8px;height:8px;left:24px;top:23px"></span>
-          <span class="brand-dot d" style="width:6px;height:6px;left:13px;top:24px"></span>
+      <a class="brand" href="#">
+        <span class="mini-logo">
+          <span style="left:4px;top:17px;width:5px;height:5px;background:#8e969e"></span>
+          <span style="left:13px;top:13px;width:8px;height:8px;background:#4e5967"></span>
+          <span style="left:23px;top:10px;width:11px;height:11px;background:#ff6a00"></span>
+          <span style="left:25px;top:24px;width:8px;height:8px;background:#ff6a00"></span>
+          <span style="left:14px;top:25px;width:6px;height:6px;background:#4e5967"></span>
         </span>
         Aerio
       </a>
@@ -383,7 +331,7 @@
         <a href="#future">Future</a>
       </nav>
 
-      <a class="btn btn-primary" href="#">Get Started</a>
+      <a class="button" href="#">Get Started</a>
     </div>
   </header>
 
@@ -391,73 +339,77 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">Work across teams, tools, and organizations</div>
-          <h1>Where work flows together <span>and becomes a system.</span></h1>
-          <p>
-            Aerio brings tasks, files, updates, and ownership into one clear layer
-            so project work can move without chasing people across tools.
-          </p>
+          <div class="eyebrow">Work across teams tools and organizations</div>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#">Get Started</a>
-            <a class="btn btn-secondary" href="#how">See how it works</a>
+          <h1>
+            Work flows together
+            <span>and becomes a system</span>
+          </h1>
+
+          <div class="hero-copy">
+            Bring work into one clear layer so teams can see what is done what is missing and what comes next
           </div>
 
-          <div class="hero-note">Simple to use. Powerful when needed.</div>
+          <div class="hero-actions">
+            <a class="button" href="#">Get Started</a>
+            <a class="button secondary" href="#how">How it works</a>
+          </div>
         </div>
 
-        <div class="logo-field" aria-label="Aerio particle logo">
-          <!-- outer grey particles -->
-          <span class="particle" style="width:9px;height:9px;left:13%;top:43%"></span>
-          <span class="particle" style="width:7px;height:7px;left:18%;top:31%"></span>
-          <span class="particle" style="width:8px;height:8px;left:20%;top:60%"></span>
-          <span class="particle" style="width:12px;height:12px;left:27%;top:24%"></span>
-          <span class="particle" style="width:13px;height:13px;left:29%;top:45%"></span>
-          <span class="particle" style="width:10px;height:10px;left:31%;top:70%"></span>
-          <span class="particle" style="width:15px;height:15px;left:39%;top:34%"></span>
-          <span class="particle" style="width:16px;height:16px;left:39%;top:57%"></span>
+        <div class="logo-card">
+          <div class="logo-mark">
+            <!-- light grey -->
+            <span class="dot" style="left:12%;top:38%;width:10px;height:10px;background:#8e969e"></span>
+            <span class="dot" style="left:16%;top:51%;width:13px;height:13px;background:#8e969e"></span>
+            <span class="dot" style="left:20%;top:28%;width:12px;height:12px;background:#8e969e"></span>
+            <span class="dot" style="left:23%;top:66%;width:11px;height:11px;background:#8e969e"></span>
+            <span class="dot" style="left:30%;top:20%;width:15px;height:15px;background:#8e969e"></span>
+            <span class="dot" style="left:30%;top:43%;width:17px;height:17px;background:#8e969e"></span>
+            <span class="dot" style="left:33%;top:58%;width:15px;height:15px;background:#8e969e"></span>
+            <span class="dot" style="left:38%;top:73%;width:12px;height:12px;background:#8e969e"></span>
 
-          <!-- transition particles -->
-          <span class="particle d" style="width:20px;height:20px;left:49%;top:28%"></span>
-          <span class="particle d" style="width:24px;height:24px;left:50%;top:47%"></span>
-          <span class="particle d" style="width:20px;height:20px;left:48%;top:66%"></span>
-          <span class="particle d" style="width:18px;height:18px;left:57%;top:38%"></span>
-          <span class="particle d" style="width:22px;height:22px;left:57%;top:58%"></span>
+            <!-- dark transition -->
+            <span class="dot" style="left:43%;top:30%;width:21px;height:21px;background:#4e5967"></span>
+            <span class="dot" style="left:45%;top:46%;width:27px;height:27px;background:#4e5967"></span>
+            <span class="dot" style="left:44%;top:63%;width:22px;height:22px;background:#4e5967"></span>
+            <span class="dot" style="left:53%;top:38%;width:23px;height:23px;background:#4e5967"></span>
+            <span class="dot" style="left:55%;top:56%;width:28px;height:28px;background:#4e5967"></span>
+            <span class="dot" style="left:50%;top:72%;width:20px;height:20px;background:#4e5967"></span>
 
-          <!-- orange discovered core -->
-          <span class="particle o" style="width:28px;height:28px;left:66%;top:25%"></span>
-          <span class="particle o" style="width:30px;height:30px;left:73%;top:31%"></span>
-          <span class="particle o" style="width:26px;height:26px;left:66%;top:45%"></span>
-          <span class="particle o" style="width:32px;height:32px;left:76%;top:49%"></span>
-          <span class="particle o" style="width:27px;height:27px;left:68%;top:63%"></span>
-          <span class="particle o" style="width:24px;height:24px;left:80%;top:66%"></span>
+            <!-- orange core -->
+            <span class="dot" style="left:67%;top:28%;width:28px;height:28px;background:#ff6a00"></span>
+            <span class="dot" style="left:76%;top:33%;width:31px;height:31px;background:#ff6a00"></span>
+            <span class="dot" style="left:64%;top:45%;width:29px;height:29px;background:#ff6a00"></span>
+            <span class="dot" style="left:77%;top:50%;width:32px;height:32px;background:#ff6a00"></span>
+            <span class="dot" style="left:68%;top:64%;width:30px;height:30px;background:#ff6a00"></span>
+            <span class="dot" style="left:82%;top:66%;width:24px;height:24px;background:#ff6a00"></span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="problem" class="section-soft">
-      <div class="container split">
+    <section id="problem" class="soft">
+      <div class="container">
         <div class="section-head">
           <div class="eyebrow">The gap</div>
-          <h2>Work does not fail inside tools. It fails between them.</h2>
-          <p>
-            Important project work gets scattered across email, chat, file drives,
-            spreadsheets, and meetings. Everyone has pieces. No one has the system.
-          </p>
+          <h2>Work breaks between systems</h2>
+          <div class="section-line">
+            Tasks files and updates live in different places
+          </div>
         </div>
 
-        <div class="bullet-list">
-          <div class="bullet">
-            <div class="check">✓</div>
-            <div><strong>Ownership gets blurry</strong><span>People know they are involved, but not always what they own next.</span></div>
+        <div class="cards">
+          <div class="card">
+            <h3>Ownership gets lost</h3>
+            <p>People know they are involved but not always what they own next</p>
           </div>
-          <div class="bullet">
-            <div class="check">✓</div>
-            <div><strong>Submissions get buried</strong><span>Files and updates arrive in different places with no clean project view.</span></div>
+          <div class="card">
+            <h3>Updates get buried</h3>
+            <p>Files links and comments spread across inboxes drives and chat</p>
           </div>
-          <div class="bullet">
-            <div class="check">✓</div>
-            <div><strong>Status becomes manual</strong><span>Project leaders spend time chasing instead of moving the work forward.</span></div>
+          <div class="card">
+            <h3>Status becomes manual</h3>
+            <p>Project leaders chase the work instead of moving it forward</p>
           </div>
         </div>
       </div>
@@ -465,98 +417,94 @@
 
     <section id="how">
       <div class="container">
-        <div class="section-head center">
+        <div class="section-head">
           <div class="eyebrow">How it works</div>
-          <h2>Work flows in. Aerio organizes it. You move with clarity.</h2>
-          <p>
-            Aerio is a lightweight layer above the tools teams already use.
-          </p>
+          <h2>Work flows in Aerio organizes it</h2>
+          <div class="section-line">
+            You move forward with clarity
+          </div>
         </div>
 
-        <div class="grid-3">
+        <div class="cards">
           <div class="card">
-            <div class="step-num">1</div>
+            <div class="card-num">1</div>
             <h3>Bring work in</h3>
-            <p>Tasks, files, updates, links, and deliverables come together from the teams involved.</p>
+            <p>Tasks files updates links and deliverables come together</p>
           </div>
           <div class="card">
-            <div class="step-num">2</div>
+            <div class="card-num">2</div>
             <h3>Structure what matters</h3>
-            <p>Aerio organizes ownership, submissions, status, and next steps into one working view.</p>
+            <p>Ownership submissions status and next steps become visible</p>
           </div>
           <div class="card">
-            <div class="step-num">3</div>
-            <h3>Move forward</h3>
-            <p>Project leaders see what is done, what is missing, and where attention is needed.</p>
+            <div class="card-num">3</div>
+            <h3>Move with clarity</h3>
+            <p>Everyone can see what is done what is missing and what is next</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section-soft">
+    <section class="soft">
       <div class="container">
-        <div class="section-head center">
-          <div class="eyebrow">Built for real project work</div>
-          <h2>Simple for participants. Useful for project leaders.</h2>
-          <p>
-            Participants should not need another complex system. Project leaders need the control layer.
-          </p>
+        <div class="section-head">
+          <div class="eyebrow">The layer</div>
+          <h2>Simple for participants powerful for project leaders</h2>
+          <div class="section-line">
+            One place for work that spans teams tools and organizations
+          </div>
         </div>
 
-        <div class="grid-3">
+        <div class="cards">
           <div class="card">
-            <h3>Cross-organization by design</h3>
-            <p>Works when contributors sit across companies, clients, vendors, and tech stacks.</p>
+            <h3>Cross organization</h3>
+            <p>Built for projects involving clients vendors advisors and outside teams</p>
           </div>
           <div class="card">
-            <h3>Lightweight participation</h3>
-            <p>People can complete tasks, upload work, or provide links without learning a heavy tool.</p>
+            <h3>Low friction</h3>
+            <p>Participants can complete tasks submit files and share links without learning a heavy system</p>
           </div>
           <div class="card">
-            <h3>One project layer</h3>
-            <p>The project gets a central working record without replacing every system underneath.</p>
+            <h3>Central view</h3>
+            <p>Project leaders get one clean place to see progress and gaps</p>
           </div>
         </div>
       </div>
     </section>
 
     <section id="future">
-      <div class="container split">
+      <div class="container">
         <div class="section-head">
-          <div class="eyebrow">Future layer</div>
-          <h2>Once the work comes together, insight becomes possible.</h2>
-          <p>
-            Aerio starts with coordination. As the work centralizes, it can support better review,
-            clearer status, and eventually AI-assisted insight across project outputs.
-          </p>
+          <div class="eyebrow">Future ready</div>
+          <h2>Built for insight</h2>
+          <div class="section-line">
+            Start with coordination layer in intelligence over time
+          </div>
         </div>
 
-        <div class="bullet-list">
-          <div class="bullet">
-            <div class="check">✓</div>
-            <div><strong>Review faster</strong><span>See submitted work and outstanding items in one place.</span></div>
+        <div class="cards">
+          <div class="card">
+            <h3>Review faster</h3>
+            <p>See submitted work and outstanding items in one place</p>
           </div>
-          <div class="bullet">
-            <div class="check">✓</div>
-            <div><strong>Spot gaps earlier</strong><span>Identify missing inputs, late items, and unclear ownership.</span></div>
+          <div class="card">
+            <h3>Spot gaps earlier</h3>
+            <p>Identify missing inputs unclear ownership and late items</p>
           </div>
-          <div class="bullet">
-            <div class="check">✓</div>
-            <div><strong>Build toward intelligence</strong><span>Centralized work becomes the foundation for useful AI, not gimmicks.</span></div>
+          <div class="card">
+            <h3>Add intelligence</h3>
+            <p>Centralized work becomes the foundation for useful AI</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="cta">
+    <section>
       <div class="container">
-        <div class="cta-box">
-          <h2>Work flows in. Clarity comes out.</h2>
-          <p>
-            Aerio gives project leaders one place to coordinate work across teams,
-            tools, and organizations.
-          </p>
-          <a class="btn btn-primary" href="#">Get Started</a>
+        <div class="wide-panel">
+          <h2>Work flows in clarity comes out</h2>
+          <p>Aerio gives project leaders one place to coordinate what matters</p>
+          <a class="button" href="#">Get Started</a>
         </div>
       </div>
     </section>
@@ -565,7 +513,7 @@
   <footer>
     <div class="container footer-row">
       <div>© 2026 Aerio</div>
-      <div>The layer where work comes together.</div>
+      <div>The layer where work comes together</div>
     </div>
   </footer>
 </body>
