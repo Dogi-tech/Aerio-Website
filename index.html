@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aerio | Work flows together</title>
+  <style>
+    :root {
+      --orange: #ff6a00;
+      --dark: #111827;
+      --muted: #5f6673;
+      --line: #e7e9ee;
+      --soft: #f7f8fa;
+      --grey: #8e969e;
+      --deep-grey: #4e5967;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--dark);
+      background: #fff;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 750;
+      font-size: 22px;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .brand-dot {
+      position: absolute;
+      border-radius: 999px;
+      background: var(--grey);
+    }
+
+    .brand-dot.o { background: var(--orange); }
+    .brand-dot.d { background: var(--deep-grey); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 46px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: .18s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: white;
+      box-shadow: 0 10px 28px rgba(255,106,0,.22);
+    }
+
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .btn-secondary {
+      border: 1px solid var(--line);
+      color: var(--dark);
+      background: #fff;
+    }
+
+    .hero {
+      padding: 96px 0 86px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--orange);
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(46px, 6vw, 78px);
+      line-height: .96;
+      letter-spacing: -0.07em;
+      margin: 0 0 24px;
+      max-width: 780px;
+    }
+
+    h1 span { color: var(--orange); }
+
+    .hero p {
+      font-size: 20px;
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 0 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .hero-note {
+      font-size: 14px;
+      color: #858b96;
+    }
+
+    .logo-field {
+      position: relative;
+      min-height: 500px;
+      border-radius: 36px;
+      background:
+        radial-gradient(circle at 70% 45%, rgba(255,106,0,.12), transparent 34%),
+        linear-gradient(180deg, #fff, #fafafa);
+      border: 1px solid var(--line);
+      box-shadow: 0 30px 90px rgba(17,24,39,.08);
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 999px;
+      background: var(--grey);
+      opacity: .95;
+    }
+
+    .particle.d { background: var(--deep-grey); }
+    .particle.o { background: var(--orange); }
+
+    section {
+      padding: 88px 0;
+    }
+
+    .section-soft {
+      background: var(--soft);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      max-width: 780px;
+      margin-bottom: 42px;
+    }
+
+    .section-head.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+      margin: 0 0 18px;
+    }
+
+    .section-head p {
+      font-size: 19px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: 0 20px 50px rgba(17,24,39,.05);
+    }
+
+    .card h3 {
+      font-size: 22px;
+      letter-spacing: -0.035em;
+      margin: 0 0 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .step-num {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: rgba(255,106,0,.1);
+      color: var(--orange);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 54px;
+      align-items: start;
+    }
+
+    .bullet-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .bullet {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: white;
+      border: 1px solid var(--line);
+      padding: 18px;
+      border-radius: 18px;
+    }
+
+    .check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      flex: 0 0 auto;
+      margin-top: 2px;
+    }
+
+    .bullet strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .bullet span {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 96px 0;
+    }
+
+    .cta-box {
+      border-radius: 34px;
+      background: var(--dark);
+      color: white;
+      padding: 64px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box:after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(255,106,0,.22);
+    }
+
+    .cta h2 {
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .cta p {
+      color: rgba(255,255,255,.72);
+      font-size: 19px;
+      max-width: 620px;
+      margin: 0 auto 28px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .hero-grid, .split { grid-template-columns: 1fr; }
+      .logo-field { min-height: 380px; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .hero { padding-top: 64px; }
+      section { padding: 64px 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <span class="brand-mark">
+          <span class="brand-dot" style="width:5px;height:5px;left:2px;top:16px"></span>
+          <span class="brand-dot d" style="width:8px;height:8px;left:12px;top:12px"></span>
+          <span class="brand-dot o" style="width:11px;height:11px;left:22px;top:9px"></span>
+          <span class="brand-dot o" style="width:8px;height:8px;left:24px;top:23px"></span>
+          <span class="brand-dot d" style="width:6px;height:6px;left:13px;top:24px"></span>
+        </span>
+        Aerio
+      </a>
+
+      <nav class="nav-links">
+        <a href="#problem">Problem</a>
+        <a href="#how">How it works</a>
+        <a href="#future">Future</a>
+      </nav>
+
+      <a class="btn btn-primary" href="#">Get Started</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Work across teams, tools, and organizations</div>
+          <h1>Where work flows together <span>and becomes a system.</span></h1>
+          <p>
+            Aerio brings tasks, files, updates, and ownership into one clear layer
+            so project work can move without chasing people across tools.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#">Get Started</a>
+            <a class="btn btn-secondary" href="#how">See how it works</a>
+          </div>
+
+          <div class="hero-note">Simple to use. Powerful when needed.</div>
+        </div>
+
+        <div class="logo-field" aria-label="Aerio particle logo">
+          <!-- outer grey particles -->
+          <span class="particle" style="width:9px;height:9px;left:13%;top:43%"></span>
+          <span class="particle" style="width:7px;height:7px;left:18%;top:31%"></span>
+          <span class="particle" style="width:8px;height:8px;left:20%;top:60%"></span>
+          <span class="particle" style="width:12px;height:12px;left:27%;top:24%"></span>
+          <span class="particle" style="width:13px;height:13px;left:29%;top:45%"></span>
+          <span class="particle" style="width:10px;height:10px;left:31%;top:70%"></span>
+          <span class="particle" style="width:15px;height:15px;left:39%;top:34%"></span>
+          <span class="particle" style="width:16px;height:16px;left:39%;top:57%"></span>
+
+          <!-- transition particles -->
+          <span class="particle d" style="width:20px;height:20px;left:49%;top:28%"></span>
+          <span class="particle d" style="width:24px;height:24px;left:50%;top:47%"></span>
+          <span class="particle d" style="width:20px;height:20px;left:48%;top:66%"></span>
+          <span class="particle d" style="width:18px;height:18px;left:57%;top:38%"></span>
+          <span class="particle d" style="width:22px;height:22px;left:57%;top:58%"></span>
+
+          <!-- orange discovered core -->
+          <span class="particle o" style="width:28px;height:28px;left:66%;top:25%"></span>
+          <span class="particle o" style="width:30px;height:30px;left:73%;top:31%"></span>
+          <span class="particle o" style="width:26px;height:26px;left:66%;top:45%"></span>
+          <span class="particle o" style="width:32px;height:32px;left:76%;top:49%"></span>
+          <span class="particle o" style="width:27px;height:27px;left:68%;top:63%"></span>
+          <span class="particle o" style="width:24px;height:24px;left:80%;top:66%"></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem" class="section-soft">
+      <div class="container split">
+        <div class="section-head">
+          <div class="eyebrow">The gap</div>
+          <h2>Work does not fail inside tools. It fails between them.</h2>
+          <p>
+            Important project work gets scattered across email, chat, file drives,
+            spreadsheets, and meetings. Everyone has pieces. No one has the system.
+          </p>
+        </div>
+
+        <div class="bullet-list">
+          <div class="bullet">
+            <div class="check">✓</div>
+            <div><strong>Ownership gets blurry</strong><span>People know they are involved, but not always what they own next.</span></div>
+          </div>
+          <div class="bullet">
+            <div class="check">✓</div>
+            <div><strong>Submissions get buried</strong><span>Files and updates arrive in different places with no clean project view.</span></div>
+          </div>
+          <div class="bullet">
+            <div class="check">✓</div>
+            <div><strong>Status becomes manual</strong><span>Project leaders spend time chasing instead of moving the work forward.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <div class="section-head center">
+          <div class="eyebrow">How it works</div>
+          <h2>Work flows in. Aerio organizes it. You move with clarity.</h2>
+          <p>
+            Aerio is a lightweight layer above the tools teams already use.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="step-num">1</div>
+            <h3>Bring work in</h3>
+            <p>Tasks, files, updates, links, and deliverables come together from the teams involved.</p>
+          </div>
+          <div class="card">
+            <div class="step-num">2</div>
+            <h3>Structure what matters</h3>
+            <p>Aerio organizes ownership, submissions, status, and next steps into one working view.</p>
+          </div>
+          <div class="card">
+            <div class="step-num">3</div>
+            <h3>Move forward</h3>
+            <p>Project leaders see what is done, what is missing, and where attention is needed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-soft">
+      <div class="container">
+        <div class="section-head center">
+          <div class="eyebrow">Built for real project work</div>
+          <h2>Simple for participants. Useful for project leaders.</h2>
+          <p>
+            Participants should not need another complex system. Project leaders need the control layer.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Cross-organization by design</h3>
+            <p>Works when contributors sit across companies, clients, vendors, and tech stacks.</p>
+          </div>
+          <div class="card">
+            <h3>Lightweight participation</h3>
+            <p>People can complete tasks, upload work, or provide links without learning a heavy tool.</p>
+          </div>
+          <div class="card">
+            <h3>One project layer</h3>
+            <p>The project gets a central working record without replacing every system underneath.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="future">
+      <div class="container split">
+        <div class="section-head">
+          <div class="eyebrow">Future layer</div>
+          <h2>Once the work comes together, insight becomes possible.</h2>
+          <p>
+            Aerio starts with coordination. As the work centralizes, it can support better review,
+            clearer status, and eventually AI-assisted insight across project outputs.
+          </p>
+        </div>
+
+        <div class="bullet-list">
+          <div class="bullet">
+            <div class="check">✓</div>
+            <div><strong>Review faster</strong><span>See submitted work and outstanding items in one place.</span></div>
+          </div>
+          <div class="bullet">
+            <div class="check">✓</div>
+            <div><strong>Spot gaps earlier</strong><span>Identify missing inputs, late items, and unclear ownership.</span></div>
+          </div>
+          <div class="bullet">
+            <div class="check">✓</div>
+            <div><strong>Build toward intelligence</strong><span>Centralized work becomes the foundation for useful AI, not gimmicks.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Work flows in. Clarity comes out.</h2>
+          <p>
+            Aerio gives project leaders one place to coordinate work across teams,
+            tools, and organizations.
+          </p>
+          <a class="btn btn-primary" href="#">Get Started</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© 2026 Aerio</div>
+      <div>The layer where work comes together.</div>
+    </div>
+  </footer>
+</body>
+</html>
