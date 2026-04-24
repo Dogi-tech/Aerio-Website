@@ -18,17 +18,16 @@
 
     * { box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       color: var(--dark);
-      background: white;
+      background: #fff;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .container {
       width: min(1120px, calc(100% - 44px));
@@ -38,8 +37,8 @@
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
-      background: rgba(255,255,255,.92);
+      z-index: 20;
+      background: rgba(255,255,255,.94);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
     }
@@ -56,8 +55,8 @@
       align-items: center;
       gap: 12px;
       font-size: 24px;
-      font-weight: 800;
-      letter-spacing: -0.04em;
+      font-weight: 850;
+      letter-spacing: -0.045em;
     }
 
     .mini-logo {
@@ -90,7 +89,7 @@
       background: var(--orange);
       color: white;
       font-weight: 800;
-      box-shadow: 0 12px 30px rgba(255,106,0,.2);
+      box-shadow: 0 12px 28px rgba(255,106,0,.22);
     }
 
     .btn.secondary {
@@ -101,15 +100,15 @@
     }
 
     .hero {
-      padding: 96px 0 86px;
+      padding: 86px 0 82px;
       text-align: center;
     }
 
     .logo-mark {
-      width: 300px;
-      height: 230px;
+      width: 310px;
+      height: 220px;
       position: relative;
-      margin: 0 auto 40px;
+      margin: 0 auto 34px;
     }
 
     .eyebrow {
@@ -122,11 +121,11 @@
     }
 
     h1 {
-      font-size: clamp(52px, 8vw, 92px);
+      font-size: clamp(54px, 8vw, 92px);
       line-height: .92;
       letter-spacing: -0.08em;
       margin: 0 auto 24px;
-      max-width: 850px;
+      max-width: 880px;
     }
 
     h1 span {
@@ -135,10 +134,10 @@
     }
 
     .sub {
-      font-size: clamp(21px, 2.4vw, 28px);
+      font-size: clamp(21px, 2.2vw, 26px);
       line-height: 1.25;
       color: var(--muted);
-      max-width: 740px;
+      max-width: 780px;
       margin: 0 auto 34px;
       letter-spacing: -0.035em;
     }
@@ -155,7 +154,7 @@
       justify-content: center;
       gap: 14px;
       flex-wrap: wrap;
-      margin-top: 42px;
+      margin-top: 40px;
     }
 
     .pill {
@@ -168,29 +167,27 @@
     }
 
     section {
-      padding: 86px 0;
+      padding: 80px 0;
       border-top: 1px solid var(--line);
     }
 
-    section.soft {
-      background: var(--soft);
-    }
+    section.soft { background: var(--soft); }
 
     .section-head {
-      max-width: 820px;
-      margin: 0 auto 42px;
+      max-width: 840px;
+      margin: 0 auto 40px;
       text-align: center;
     }
 
     h2 {
-      font-size: clamp(38px, 5.5vw, 66px);
+      font-size: clamp(38px, 5.2vw, 64px);
       line-height: .96;
       letter-spacing: -0.075em;
       margin: 0 0 18px;
     }
 
     .section-line {
-      font-size: clamp(21px, 2.4vw, 28px);
+      font-size: clamp(21px, 2.25vw, 27px);
       line-height: 1.25;
       color: var(--muted);
       letter-spacing: -0.04em;
@@ -200,23 +197,21 @@
       max-width: 780px;
       margin: 0 auto;
       display: grid;
-      gap: 18px;
+      gap: 0;
     }
 
     .simple-row {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
       padding: 22px 0;
       border-top: 1px solid var(--line);
       font-size: 24px;
       letter-spacing: -0.04em;
-      font-weight: 720;
+      font-weight: 730;
     }
 
-    .simple-row:first-child {
-      border-top: 0;
-    }
+    .simple-row:first-child { border-top: 0; }
 
     .num {
       color: var(--orange);
@@ -227,9 +222,7 @@
       flex: 0 0 auto;
     }
 
-    .cta {
-      padding: 92px 0;
-    }
+    .cta { padding: 86px 0; }
 
     .cta-box {
       text-align: center;
@@ -239,10 +232,7 @@
       padding: 70px 28px;
     }
 
-    .cta-box h2 {
-      color: white;
-      margin-bottom: 20px;
-    }
+    .cta-box h2 { color: white; margin-bottom: 20px; }
 
     .cta-box .section-line {
       color: rgba(255,255,255,.72);
@@ -265,9 +255,9 @@
 
     @media (max-width: 800px) {
       .nav-links { display: none; }
-      .hero { padding-top: 72px; }
-      .logo-mark { width: 260px; height: 210px; }
-      section { padding: 68px 0; }
+      .hero { padding-top: 68px; }
+      .logo-mark { width: 270px; height: 200px; }
+      section { padding: 64px 0; }
       .simple-row { font-size: 21px; }
     }
   </style>
@@ -278,11 +268,11 @@
     <div class="container nav">
       <a class="brand" href="#">
         <span class="mini-logo">
-          <span class="dot" style="left:12%;top:52%;width:5px;height:5px;background:#8e969e"></span>
-          <span class="dot" style="left:38%;top:42%;width:8px;height:8px;background:#4e5967"></span>
-          <span class="dot" style="left:70%;top:34%;width:12px;height:12px;background:#ff6a00"></span>
-          <span class="dot" style="left:75%;top:72%;width:8px;height:8px;background:#ff6a00"></span>
-          <span class="dot" style="left:42%;top:76%;width:6px;height:6px;background:#4e5967"></span>
+          <span class="dot" style="left:18%;top:54%;width:5px;height:5px;background:#8e969e"></span>
+          <span class="dot" style="left:42%;top:46%;width:8px;height:8px;background:#4e5967"></span>
+          <span class="dot" style="left:68%;top:38%;width:12px;height:12px;background:#ff6a00"></span>
+          <span class="dot" style="left:74%;top:68%;width:8px;height:8px;background:#ff6a00"></span>
+          <span class="dot" style="left:46%;top:74%;width:6px;height:6px;background:#4e5967"></span>
         </span>
         Aerio
       </a>
@@ -300,33 +290,33 @@
   <main>
     <section class="hero">
       <div class="container">
+
         <div class="logo-mark">
-          <span class="dot" style="left:10%;top:42%;width:9px;height:9px;background:#8e969e"></span>
-          <span class="dot" style="left:16%;top:61%;width:11px;height:11px;background:#8e969e"></span>
-          <span class="dot" style="left:22%;top:28%;width:12px;height:12px;background:#8e969e"></span>
-          <span class="dot" style="left:28%;top:49%;width:16px;height:16px;background:#8e969e"></span>
-          <span class="dot" style="left:34%;top:70%;width:12px;height:12px;background:#8e969e"></span>
+          <span class="dot" style="left:18%;top:44%;width:10px;height:10px;background:#8e969e"></span>
+          <span class="dot" style="left:23%;top:62%;width:12px;height:12px;background:#8e969e"></span>
+          <span class="dot" style="left:30%;top:31%;width:13px;height:13px;background:#8e969e"></span>
+          <span class="dot" style="left:35%;top:51%;width:17px;height:17px;background:#8e969e"></span>
 
-          <span class="dot" style="left:43%;top:34%;width:24px;height:24px;background:#4e5967"></span>
-          <span class="dot" style="left:47%;top:55%;width:30px;height:30px;background:#4e5967"></span>
-          <span class="dot" style="left:45%;top:76%;width:22px;height:22px;background:#4e5967"></span>
-          <span class="dot" style="left:58%;top:43%;width:24px;height:24px;background:#4e5967"></span>
+          <span class="dot" style="left:46%;top:37%;width:25px;height:25px;background:#4e5967"></span>
+          <span class="dot" style="left:49%;top:57%;width:31px;height:31px;background:#4e5967"></span>
+          <span class="dot" style="left:47%;top:75%;width:22px;height:22px;background:#4e5967"></span>
+          <span class="dot" style="left:58%;top:48%;width:26px;height:26px;background:#4e5967"></span>
 
-          <span class="dot" style="left:70%;top:30%;width:33px;height:33px;background:#ff6a00"></span>
-          <span class="dot" style="left:82%;top:39%;width:30px;height:30px;background:#ff6a00"></span>
-          <span class="dot" style="left:69%;top:58%;width:38px;height:38px;background:#ff6a00"></span>
-          <span class="dot" style="left:84%;top:68%;width:27px;height:27px;background:#ff6a00"></span>
+          <span class="dot" style="left:69%;top:34%;width:35px;height:35px;background:#ff6a00"></span>
+          <span class="dot" style="left:80%;top:43%;width:31px;height:31px;background:#ff6a00"></span>
+          <span class="dot" style="left:68%;top:61%;width:40px;height:40px;background:#ff6a00"></span>
+          <span class="dot" style="left:81%;top:70%;width:28px;height:28px;background:#ff6a00"></span>
         </div>
 
         <div class="eyebrow">Simple to use powerful when needed</div>
 
         <h1>
-          Work flows together
-          <span>and becomes a system</span>
+          Bring everything together
+          <span>And see what’s possible</span>
         </h1>
 
         <p class="sub">
-          One place to bring work across teams tools and organizations into view
+          One place for the people files tasks and updates that move things forward
         </p>
 
         <div class="actions">
@@ -335,10 +325,10 @@
         </div>
 
         <div class="proof">
-          <div class="pill">Across tools</div>
-          <div class="pill">Across organizations</div>
-          <div class="pill">Clear ownership</div>
-          <div class="pill">Central project view</div>
+          <div class="pill">People</div>
+          <div class="pill">Files</div>
+          <div class="pill">Tasks</div>
+          <div class="pill">Updates</div>
         </div>
       </div>
     </section>
@@ -346,17 +336,15 @@
     <section id="problem" class="soft">
       <div class="container">
         <div class="section-head">
-          <div class="eyebrow">The workflow gap</div>
-          <h2>Work breaks between systems</h2>
-          <div class="section-line">
-            Tasks updates and deliverables end up everywhere
-          </div>
+          <div class="eyebrow">The problem</div>
+          <h2>Things get scattered</h2>
+          <div class="section-line">People chase files updates and answers</div>
         </div>
 
         <div class="simple-list">
-          <div class="simple-row"><span class="num">01</span> Ownership gets lost</div>
-          <div class="simple-row"><span class="num">02</span> Status becomes manual</div>
-          <div class="simple-row"><span class="num">03</span> Project leaders chase the work</div>
+          <div class="simple-row"><span class="num">01</span> Ownership gets unclear</div>
+          <div class="simple-row"><span class="num">02</span> Status gets buried</div>
+          <div class="simple-row"><span class="num">03</span> Next steps get missed</div>
         </div>
       </div>
     </section>
@@ -365,16 +353,14 @@
       <div class="container">
         <div class="section-head">
           <div class="eyebrow">How it works</div>
-          <h2>Work flows in</h2>
-          <div class="section-line">
-            Aerio organizes it and clarity comes out
-          </div>
+          <h2>Bring it in</h2>
+          <div class="section-line">Aerio keeps it clear and moving</div>
         </div>
 
         <div class="simple-list">
-          <div class="simple-row"><span class="num">01</span> Bring work in</div>
-          <div class="simple-row"><span class="num">02</span> Structure what matters</div>
-          <div class="simple-row"><span class="num">03</span> Move forward with clarity</div>
+          <div class="simple-row"><span class="num">01</span> Add the people</div>
+          <div class="simple-row"><span class="num">02</span> Collect what matters</div>
+          <div class="simple-row"><span class="num">03</span> Know what comes next</div>
         </div>
       </div>
     </section>
@@ -382,17 +368,15 @@
     <section class="soft">
       <div class="container">
         <div class="section-head">
-          <div class="eyebrow">The layer</div>
-          <h2>Aerio brings work together</h2>
-          <div class="section-line">
-            One layer across tools teams and organizations
-          </div>
+          <div class="eyebrow">The difference</div>
+          <h2>Simple on the surface</h2>
+          <div class="section-line">Powerful when everything starts coming together</div>
         </div>
 
         <div class="simple-list">
-          <div class="simple-row"><span class="num">A</span> Simple for participants</div>
-          <div class="simple-row"><span class="num">B</span> Useful for project leaders</div>
-          <div class="simple-row"><span class="num">C</span> Built for cross organization work</div>
+          <div class="simple-row"><span class="num">A</span> Easy for anyone to use</div>
+          <div class="simple-row"><span class="num">B</span> Useful across any team</div>
+          <div class="simple-row"><span class="num">C</span> Built for better outcomes</div>
         </div>
       </div>
     </section>
@@ -400,17 +384,15 @@
     <section id="future">
       <div class="container">
         <div class="section-head">
-          <div class="eyebrow">Future</div>
-          <h2>Built for insight</h2>
-          <div class="section-line">
-            Start with coordination and layer in intelligence over time
-          </div>
+          <div class="eyebrow">The future</div>
+          <h2>More becomes possible</h2>
+          <div class="section-line">Once everything is together the right tools can help you do more</div>
         </div>
 
         <div class="simple-list">
-          <div class="simple-row"><span class="num">01</span> Review work faster</div>
-          <div class="simple-row"><span class="num">02</span> Surface gaps earlier</div>
-          <div class="simple-row"><span class="num">03</span> Turn scattered work into signal</div>
+          <div class="simple-row"><span class="num">01</span> Find what is missing</div>
+          <div class="simple-row"><span class="num">02</span> See what matters</div>
+          <div class="simple-row"><span class="num">03</span> Get better results</div>
         </div>
       </div>
     </section>
@@ -418,10 +400,8 @@
     <section class="cta">
       <div class="container">
         <div class="cta-box">
-          <h2>Work flows in clarity comes out</h2>
-          <div class="section-line">
-            Aerio gives project leaders one place to coordinate what matters
-          </div>
+          <h2>Bring everything together</h2>
+          <div class="section-line">And see what’s possible</div>
           <a class="btn" href="#">Get Started</a>
         </div>
       </div>
@@ -431,7 +411,7 @@
   <footer>
     <div class="container footer-row">
       <div>© 2026 Aerio</div>
-      <div>The layer where work comes together</div>
+      <div>Simple to use powerful when needed</div>
     </div>
   </footer>
 </body>
