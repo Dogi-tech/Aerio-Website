@@ -10,9 +10,12 @@
       --orange: #f97316;
       --blue: #2563eb;
       --dark: #111827;
+      --text: #1f2937;
       --muted: #6b7280;
       --light: #f8fafc;
       --border: #e5e7eb;
+      --soft-orange: rgba(249, 115, 22, 0.12);
+      --soft-blue: rgba(37, 99, 235, 0.10);
     }
 
     * { box-sizing: border-box; }
@@ -34,28 +37,26 @@
     header {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 20px 28px 10px;
+      padding: 18px 28px 6px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .logo {
+    .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 24px;
-      font-weight: 850;
-      letter-spacing: -0.04em;
+      gap: 11px;
     }
 
     .logo-mark {
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       border-radius: 10px;
       background: linear-gradient(135deg, var(--orange), #fb923c);
       position: relative;
       overflow: hidden;
+      flex: 0 0 auto;
     }
 
     .logo-mark::before {
@@ -67,6 +68,7 @@
       left: 7px;
       background: white;
       border-radius: 999px;
+      opacity: 0.96;
     }
 
     .logo-mark::after {
@@ -78,10 +80,17 @@
       bottom: 8px;
       background: white;
       border-radius: 999px;
+      opacity: 0.96;
+    }
+
+    .wordmark {
+      font-size: 23px;
+      font-weight: 850;
+      letter-spacing: -0.045em;
     }
 
     .top-cta {
-      padding: 10px 18px;
+      padding: 9px 16px;
       border-radius: 999px;
       background: var(--dark);
       color: white;
@@ -92,25 +101,25 @@
     .hero {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 36px 28px 44px;
+      padding: 34px 28px 42px;
       text-align: center;
     }
 
     .eyebrow {
       display: inline-flex;
-      padding: 8px 14px;
+      padding: 7px 13px;
       border: 1px solid var(--border);
       border-radius: 999px;
       color: var(--blue);
       background: white;
       font-size: 14px;
       font-weight: 750;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(46px, 6.8vw, 82px);
+      font-size: clamp(46px, 6.6vw, 80px);
       line-height: 0.95;
       letter-spacing: -0.075em;
       white-space: nowrap;
@@ -118,7 +127,7 @@
 
     .tagline {
       margin: 10px 0 0;
-      font-size: clamp(32px, 5vw, 62px);
+      font-size: clamp(32px, 4.9vw, 60px);
       line-height: 1;
       letter-spacing: -0.065em;
       font-weight: 850;
@@ -128,7 +137,7 @@
 
     .hero-kicker {
       margin: 20px auto 0;
-      font-size: clamp(21px, 2.3vw, 30px);
+      font-size: clamp(21px, 2.2vw, 29px);
       line-height: 1.15;
       letter-spacing: -0.04em;
       font-weight: 800;
@@ -166,21 +175,20 @@
     .visual-section {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 0 28px 58px;
+      padding: 0 28px 56px;
     }
 
     .visual {
-      min-height: 290px;
       border: 1px solid var(--border);
       border-radius: 32px;
       background:
-        radial-gradient(circle at 15% 30%, rgba(37,99,235,0.12), transparent 30%),
-        radial-gradient(circle at 83% 64%, rgba(249,115,22,0.18), transparent 32%),
+        radial-gradient(circle at 16% 32%, var(--soft-blue), transparent 30%),
+        radial-gradient(circle at 84% 66%, rgba(249,115,22,0.16), transparent 32%),
         #fff;
       box-shadow: 0 28px 70px rgba(15,23,42,0.08);
       padding: 30px;
       display: grid;
-      grid-template-columns: 1fr 180px 1fr;
+      grid-template-columns: 1fr 140px 1fr;
       gap: 24px;
       align-items: center;
     }
@@ -245,7 +253,7 @@
     section {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 56px 28px;
+      padding: 54px 28px;
     }
 
     .soft {
@@ -260,7 +268,7 @@
 
     h2 {
       margin: 0 0 18px;
-      font-size: clamp(34px, 4.5vw, 52px);
+      font-size: clamp(34px, 4.4vw, 50px);
       line-height: 1;
       letter-spacing: -0.06em;
       white-space: nowrap;
@@ -321,7 +329,7 @@
       width: 34px;
       height: 34px;
       border-radius: 999px;
-      background: rgba(249,115,22,0.12);
+      background: var(--soft-orange);
       color: var(--orange);
       display: flex;
       align-items: center;
@@ -332,7 +340,7 @@
 
     .closing {
       text-align: center;
-      padding-bottom: 78px;
+      padding-bottom: 76px;
     }
 
     .closing h2 {
@@ -381,7 +389,7 @@
 
     @media (max-width: 640px) {
       header {
-        padding: 18px 18px 8px;
+        padding: 16px 18px 4px;
       }
 
       .hero,
@@ -416,9 +424,9 @@
 
 <body>
   <header>
-    <a class="logo" href="#">
+    <a class="brand" href="#">
       <span class="logo-mark"></span>
-      <span>Aerio</span>
+      <span class="wordmark">Aerio</span>
     </a>
 
     <a class="top-cta" href="https://aerio.works">Get Started</a>
@@ -435,7 +443,7 @@
 
       <p class="hero-copy">
         Aerio sits between your tools, teams, and organizations — collecting inputs,
-        organizing the work, and turning everything into clear output.
+        organizing the work, centralizing findings, and turning project activity into clear output.
       </p>
 
       <p class="positioning">
@@ -446,11 +454,11 @@
     </section>
 
     <div class="visual-section">
-      <div class="visual" aria-label="Scattered inputs become centralized findings">
+      <div class="visual" aria-label="Scattered project inputs become centralized findings">
         <div class="input-stack">
-          <div class="input-card">Files from drives</div>
-          <div class="input-card">Updates from email</div>
-          <div class="input-card">Tasks from teams</div>
+          <div class="input-card">Files from project folders</div>
+          <div class="input-card">Updates from contributors</div>
+          <div class="input-card">Tasks across teams</div>
           <div class="input-card">Findings from workstreams</div>
         </div>
 
@@ -470,9 +478,9 @@
       <div class="inner">
         <h2>Not another system to replace your tools</h2>
         <p class="section-copy">
-          Aerio is the space between them — where requests, files, updates, and decisions
-          are coordinated. Email, spreadsheets, drives, and chat still exist. Aerio gives
-          the project a structured layer that connects them.
+          Aerio is the space between them — where requests, files, updates, findings,
+          and decisions are coordinated. Your existing tools still exist. Aerio gives
+          the project a structured layer that connects the work.
         </p>
       </div>
     </section>
@@ -533,7 +541,7 @@
         <div class="card">
           <div class="step-num">1</div>
           <h3>Set the structure</h3>
-          <p>Define the project, scope, and key steps.</p>
+          <p>Define the project, scope, people, and key steps.</p>
         </div>
 
         <div class="card">
