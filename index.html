@@ -69,26 +69,11 @@
     }
 
     .logo-mark {
-      width: 30px;
-      height: 30px;
-      position: relative;
+      width: 36px;
+      height: 36px;
       flex: 0 0 auto;
+      display: block;
     }
-
-    /* Three orange dots forming a small upward triangle — matches the PDF mark */
-    .logo-mark::before,
-    .logo-mark::after,
-    .logo-mark span {
-      content: "";
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--orange);
-    }
-    .logo-mark::before { top: 0; left: 11px; }
-    .logo-mark::after { bottom: 0; left: 0; }
-    .logo-mark span { bottom: 0; right: 0; display: block; }
 
     .wordmark {
       font-family: var(--serif);
@@ -474,7 +459,65 @@
 <body>
   <header>
     <a class="brand" href="#">
-      <span class="logo-mark"><span></span></span>
+      <svg class="logo-mark" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Aerio logo">
+        <!-- Light gray outer particles -->
+        <circle cx="143" cy="233" r="13" fill="#8E969E"/>
+        <circle cx="109" cy="314" r="11" fill="#8E969E"/>
+        <circle cx="107" cy="399" r="11" fill="#8E969E"/>
+        <circle cx="126" cy="484" r="12" fill="#8E969E"/>
+        <circle cx="162" cy="559" r="10" fill="#8E969E"/>
+        <circle cx="228" cy="164" r="13" fill="#8E969E"/>
+        <circle cx="214" cy="256" r="16" fill="#8E969E"/>
+        <circle cx="173" cy="328" r="15" fill="#8E969E"/>
+        <circle cx="173" cy="412" r="15" fill="#8E969E"/>
+        <circle cx="198" cy="488" r="14" fill="#8E969E"/>
+        <circle cx="240" cy="560" r="13" fill="#8E969E"/>
+        <circle cx="228" cy="621" r="10" fill="#8E969E"/>
+        <circle cx="304" cy="156" r="15" fill="#8E969E"/>
+        <circle cx="282" cy="199" r="17" fill="#8E969E"/>
+        <circle cx="288" cy="278" r="20" fill="#8E969E"/>
+        <circle cx="238" cy="344" r="19" fill="#8E969E"/>
+        <circle cx="243" cy="419" r="19" fill="#8E969E"/>
+        <circle cx="271" cy="494" r="18" fill="#8E969E"/>
+        <circle cx="321" cy="560" r="17" fill="#8E969E"/>
+        <circle cx="306" cy="628" r="12" fill="#8E969E"/>
+        <circle cx="383" cy="180" r="16" fill="#8E969E"/>
+        <circle cx="391" cy="590" r="20" fill="#8E969E"/>
+        <circle cx="392" cy="662" r="14" fill="#8E969E"/>
+        <!-- Dark gray transition particles -->
+        <circle cx="355" cy="219" r="22" fill="#4E5967"/>
+        <circle cx="422" cy="247" r="24" fill="#4E5967"/>
+        <circle cx="356" cy="294" r="25" fill="#4E5967"/>
+        <circle cx="423" cy="322" r="27" fill="#4E5967"/>
+        <circle cx="315" cy="343" r="20" fill="#4E5967"/>
+        <circle cx="377" cy="370" r="28" fill="#4E5967"/>
+        <circle cx="446" cy="392" r="30" fill="#4E5967"/>
+        <circle cx="315" cy="426" r="22" fill="#4E5967"/>
+        <circle cx="389" cy="444" r="29" fill="#4E5967"/>
+        <circle cx="446" cy="481" r="29" fill="#4E5967"/>
+        <circle cx="345" cy="494" r="23" fill="#4E5967"/>
+        <circle cx="412" cy="518" r="28" fill="#4E5967"/>
+        <!-- Orange core -->
+        <circle cx="473" cy="172" r="26" fill="#FF6A00"/>
+        <circle cx="524" cy="172" r="28" fill="#FF6A00"/>
+        <circle cx="602" cy="199" r="28" fill="#FF6A00"/>
+        <circle cx="498" cy="255" r="30" fill="#FF6A00"/>
+        <circle cx="576" cy="266" r="29" fill="#FF6A00"/>
+        <circle cx="651" cy="278" r="29" fill="#FF6A00"/>
+        <circle cx="474" cy="332" r="30" fill="#FF6A00"/>
+        <circle cx="560" cy="342" r="29" fill="#FF6A00"/>
+        <circle cx="644" cy="349" r="29" fill="#FF6A00"/>
+        <circle cx="525" cy="409" r="31" fill="#FF6A00"/>
+        <circle cx="612" cy="418" r="28" fill="#FF6A00"/>
+        <circle cx="673" cy="421" r="29" fill="#FF6A00"/>
+        <circle cx="460" cy="474" r="29" fill="#FF6A00"/>
+        <circle cx="543" cy="487" r="29" fill="#FF6A00"/>
+        <circle cx="634" cy="495" r="28" fill="#FF6A00"/>
+        <circle cx="503" cy="545" r="29" fill="#FF6A00"/>
+        <circle cx="584" cy="553" r="29" fill="#FF6A00"/>
+        <circle cx="468" cy="616" r="27" fill="#FF6A00"/>
+        <circle cx="548" cy="628" r="27" fill="#FF6A00"/>
+      </svg>
       <span class="wordmark">Aerio</span>
     </a>
 
