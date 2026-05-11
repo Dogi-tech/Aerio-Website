@@ -3,19 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aerio</title>
+  <title>Aerio — The connective layer for great work</title>
+  <meta name="description" content="Aerio is the connective tissue between the tools you already use, the people you bring in, and the data scattered across all of it. One project. One source of truth." />
+  <meta name="author" content="Aerio" />
+
+  <meta property="og:title" content="Aerio — The connective layer for great work" />
+  <meta property="og:description" content="People, organizations, and tools — working as one." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://aerio.work/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --orange: #f97316;
-      --blue: #2563eb;
-      --dark: #111827;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --light: #f8fafc;
-      --border: #e5e7eb;
-      --soft-orange: rgba(249, 115, 22, 0.12);
-      --soft-blue: rgba(37, 99, 235, 0.10);
+      --orange: #e87029;
+      --orange-soft: rgba(232, 112, 41, 0.14);
+      --bg: #0b0d14;
+      --bg-elev: #11141d;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.14);
+      --text: #f5f5f7;
+      --muted: #b7bac3;
+      --dim: #7a7d87;
+      --serif: 'EB Garamond', Georgia, serif;
+      --sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     * { box-sizing: border-box; }
@@ -24,20 +39,24 @@
 
     body {
       margin: 0;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--dark);
-      background: #fff;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(232, 112, 41, 0.08), transparent 45%),
+        radial-gradient(circle at 85% 30%, rgba(50, 70, 140, 0.10), transparent 50%),
+        var(--bg);
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
+    /* ---------- header ---------- */
     header {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 18px 28px 6px;
+      padding: 22px 28px 6px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -46,219 +65,248 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 11px;
+      gap: 12px;
     }
 
     .logo-mark {
-      width: 32px;
-      height: 32px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--orange), #fb923c);
+      width: 30px;
+      height: 30px;
       position: relative;
-      overflow: hidden;
       flex: 0 0 auto;
     }
 
-    .logo-mark::before {
+    /* Three orange dots forming a small upward triangle — matches the PDF mark */
+    .logo-mark::before,
+    .logo-mark::after,
+    .logo-mark span {
       content: "";
       position: absolute;
-      width: 16px;
-      height: 5px;
-      top: 9px;
-      left: 7px;
-      background: white;
+      width: 8px;
+      height: 8px;
       border-radius: 999px;
-      opacity: 0.96;
+      background: var(--orange);
     }
-
-    .logo-mark::after {
-      content: "";
-      position: absolute;
-      width: 9px;
-      height: 9px;
-      right: 8px;
-      bottom: 8px;
-      background: white;
-      border-radius: 999px;
-      opacity: 0.96;
-    }
+    .logo-mark::before { top: 0; left: 11px; }
+    .logo-mark::after { bottom: 0; left: 0; }
+    .logo-mark span { bottom: 0; right: 0; display: block; }
 
     .wordmark {
-      font-size: 23px;
-      font-weight: 850;
-      letter-spacing: -0.045em;
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
     }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .top-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      padding: 8px 12px;
+      transition: color 0.15s ease;
+    }
+    .top-link:hover { color: var(--text); }
 
     .top-cta {
-      padding: 9px 16px;
+      padding: 10px 18px;
       border-radius: 999px;
-      background: var(--dark);
+      background: var(--orange);
       color: white;
       font-size: 14px;
-      font-weight: 750;
+      font-weight: 600;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .top-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(232, 112, 41, 0.35);
     }
 
+    /* ---------- hero ---------- */
     .hero {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 34px 28px 42px;
+      padding: 60px 28px 50px;
       text-align: center;
     }
 
     .eyebrow {
-      display: inline-flex;
-      padding: 7px 13px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      color: var(--blue);
-      background: white;
-      font-size: 14px;
-      font-weight: 750;
-      margin-bottom: 20px;
+      display: inline-block;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(46px, 6.6vw, 80px);
-      line-height: 0.95;
-      letter-spacing: -0.075em;
-      white-space: nowrap;
+      font-family: var(--serif);
+      font-size: clamp(48px, 7.2vw, 92px);
+      line-height: 1.02;
+      letter-spacing: -0.022em;
+      font-weight: 500;
+      color: var(--text);
     }
 
-    .tagline {
-      margin: 10px 0 0;
-      font-size: clamp(32px, 4.9vw, 60px);
-      line-height: 1;
-      letter-spacing: -0.065em;
-      font-weight: 850;
+    h1 .accent {
+      font-style: italic;
       color: var(--orange);
-      white-space: nowrap;
-    }
-
-    .hero-kicker {
-      margin: 20px auto 0;
-      font-size: clamp(21px, 2.2vw, 29px);
-      line-height: 1.15;
-      letter-spacing: -0.04em;
-      font-weight: 800;
-      white-space: nowrap;
+      font-weight: 500;
     }
 
     .hero-copy {
-      margin: 18px auto 0;
-      max-width: 760px;
+      margin: 28px auto 0;
+      max-width: 720px;
       color: var(--muted);
       font-size: 19px;
       line-height: 1.55;
     }
 
-    .positioning {
-      margin: 20px auto 28px;
-      font-size: 18px;
-      font-weight: 850;
-      line-height: 1.35;
-      white-space: nowrap;
+    .hero-copy strong {
+      color: var(--text);
+      font-weight: 600;
     }
 
     .primary-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 24px;
+      padding: 15px 28px;
       border-radius: 999px;
       background: var(--orange);
       color: white;
-      font-weight: 850;
-      box-shadow: 0 14px 34px rgba(249, 115, 22, 0.24);
+      font-size: 15px;
+      font-weight: 600;
+      margin-top: 36px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 12px 32px rgba(232, 112, 41, 0.28);
+    }
+    .primary-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(232, 112, 41, 0.4);
     }
 
+    .secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 28px;
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      background: transparent;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      margin-top: 36px;
+      margin-left: 12px;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .secondary-btn:hover {
+      border-color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    /* ---------- visual diagram ---------- */
     .visual-section {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 0 28px 56px;
+      padding: 0 28px 70px;
     }
 
     .visual {
       border: 1px solid var(--border);
-      border-radius: 32px;
+      border-radius: 28px;
       background:
-        radial-gradient(circle at 16% 32%, var(--soft-blue), transparent 30%),
-        radial-gradient(circle at 84% 66%, rgba(249,115,22,0.16), transparent 32%),
-        #fff;
-      box-shadow: 0 28px 70px rgba(15,23,42,0.08);
-      padding: 30px;
+        radial-gradient(circle at 18% 30%, rgba(232, 112, 41, 0.10), transparent 35%),
+        radial-gradient(circle at 82% 70%, rgba(80, 110, 200, 0.10), transparent 40%),
+        var(--bg-elev);
+      padding: 32px;
       display: grid;
-      grid-template-columns: 1fr 140px 1fr;
+      grid-template-columns: 1fr 100px 1fr;
       gap: 24px;
       align-items: center;
     }
 
     .input-stack {
       display: grid;
-      gap: 12px;
+      gap: 10px;
     }
 
     .input-card {
       border: 1px solid var(--border);
-      border-radius: 18px;
-      background: white;
-      padding: 14px 16px;
-      box-shadow: 0 10px 26px rgba(15,23,42,0.05);
+      border-radius: 14px;
+      background: var(--bg-card);
+      padding: 14px 18px;
       color: var(--muted);
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 500;
+      backdrop-filter: blur(8px);
     }
 
     .flow {
       text-align: center;
       color: var(--orange);
-      font-size: 46px;
-      font-weight: 900;
+      font-size: 38px;
+      font-weight: 700;
+      font-family: var(--serif);
     }
 
     .output-card {
-      border-radius: 26px;
-      background: var(--dark);
-      color: white;
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(232, 112, 41, 0.12), rgba(232, 112, 41, 0.02));
+      border: 1px solid rgba(232, 112, 41, 0.25);
       padding: 24px;
-      box-shadow: 0 24px 50px rgba(17,24,39,0.22);
     }
 
     .output-card h3 {
-      margin: 0 0 10px;
-      font-size: 24px;
-      letter-spacing: -0.045em;
-      white-space: nowrap;
+      margin: 0 0 8px;
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--text);
     }
 
     .output-card p {
       margin: 0;
-      color: #d1d5db;
-      line-height: 1.45;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     .nuggets {
       display: flex;
-      gap: 8px;
-      margin-top: 18px;
+      gap: 6px;
+      margin-top: 16px;
     }
 
     .nuggets span {
-      width: 32px;
-      height: 32px;
-      border-radius: 10px;
+      width: 28px;
+      height: 6px;
+      border-radius: 999px;
       background: var(--orange);
+      opacity: 0.7;
     }
 
+    /* ---------- generic sections ---------- */
     section {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 54px 28px;
+      padding: 70px 28px;
     }
 
     .soft {
       max-width: none;
-      background: var(--light);
+      background: rgba(255, 255, 255, 0.015);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
     .inner {
@@ -268,10 +316,18 @@
 
     h2 {
       margin: 0 0 18px;
-      font-size: clamp(34px, 4.4vw, 50px);
-      line-height: 1;
-      letter-spacing: -0.06em;
-      white-space: nowrap;
+      font-family: var(--serif);
+      font-size: clamp(34px, 4.6vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    h2 .accent {
+      font-style: italic;
+      color: var(--orange);
+      font-weight: 500;
     }
 
     .section-copy {
@@ -282,142 +338,136 @@
       line-height: 1.55;
     }
 
+    /* ---------- 3-step process ---------- */
     .grid-3,
-    .grid-4,
-    .grid-5 {
+    .grid-4 {
       display: grid;
-      gap: 18px;
-      margin-top: 30px;
+      gap: 22px;
+      margin-top: 36px;
     }
 
     .grid-3 { grid-template-columns: repeat(3, 1fr); }
     .grid-4 { grid-template-columns: repeat(4, 1fr); }
-    .grid-5 { grid-template-columns: repeat(5, 1fr); }
 
-    .card {
+    .step-card {
       border: 1px solid var(--border);
-      border-radius: 24px;
-      background: white;
-      padding: 24px;
-      box-shadow: 0 14px 34px rgba(15,23,42,0.05);
+      border-radius: 22px;
+      background: var(--bg-card);
+      padding: 28px 26px;
+      transition: border-color 0.15s ease, transform 0.2s ease;
     }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 20px;
-      letter-spacing: -0.04em;
-      white-space: nowrap;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .value-card {
-      padding: 20px;
-    }
-
-    .value-card strong {
-      display: block;
-      font-size: 16px;
-      line-height: 1.3;
+    .step-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
     }
 
     .step-num {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      background: var(--soft-orange);
       color: var(--orange);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
       margin-bottom: 18px;
     }
 
+    .step-card h3 {
+      margin: 0 0 12px;
+      font-family: var(--serif);
+      font-size: 26px;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .step-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 15px;
+    }
+
+    /* ---------- feature grid ---------- */
+    .feature-eyebrow {
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .grid-features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px 36px;
+      margin-top: 38px;
+    }
+
+    .feature {
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+    }
+
+    .feature strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 19px;
+      line-height: 1.2;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* ---------- closing ---------- */
     .closing {
       text-align: center;
-      padding-bottom: 76px;
+      padding: 90px 28px 110px;
     }
 
     .closing h2 {
-      margin-bottom: 24px;
+      margin-bottom: 36px;
     }
 
+    /* ---------- footer ---------- */
     footer {
       border-top: 1px solid var(--border);
-      padding: 24px 28px;
-      color: var(--muted);
-      font-size: 14px;
+      padding: 30px 28px;
+      color: var(--dim);
+      font-size: 13px;
     }
 
     footer .inner {
       display: flex;
       justify-content: space-between;
       gap: 18px;
+      letter-spacing: 0.04em;
     }
 
+    /* ---------- responsive ---------- */
     @media (max-width: 980px) {
-      h1,
-      .tagline,
-      .hero-kicker,
-      .positioning,
-      h2,
-      .card h3,
-      .output-card h3 {
-        white-space: normal;
-      }
-
-      .visual {
-        grid-template-columns: 1fr;
-      }
-
-      .flow {
-        transform: rotate(90deg);
-        height: 48px;
-      }
-
-      .grid-3,
-      .grid-4,
-      .grid-5 {
-        grid-template-columns: 1fr;
-      }
+      .visual { grid-template-columns: 1fr; }
+      .flow { transform: rotate(90deg); height: 38px; }
+      .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .grid-features { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 640px) {
-      header {
-        padding: 16px 18px 4px;
-      }
-
-      .hero,
-      .visual-section,
-      section {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
-      h1 {
-        font-size: 42px;
-      }
-
-      .tagline {
-        font-size: 34px;
-      }
-
-      .hero-kicker {
-        font-size: 22px;
-      }
-
-      .top-cta {
-        padding: 9px 14px;
-      }
-
-      footer .inner {
-        flex-direction: column;
-      }
+      header { padding: 18px 18px 4px; }
+      .hero, .visual-section, section { padding-left: 18px; padding-right: 18px; }
+      .hero { padding-top: 40px; padding-bottom: 30px; }
+      .grid-features { grid-template-columns: 1fr; gap: 22px; }
+      .secondary-btn { margin-left: 0; margin-top: 16px; display: flex; }
+      .top-link { display: none; }
+      footer .inner { flex-direction: column; gap: 6px; }
     }
   </style>
 </head>
@@ -425,48 +475,51 @@
 <body>
   <header>
     <a class="brand" href="#">
-      <span class="logo-mark"></span>
+      <span class="logo-mark"><span></span></span>
       <span class="wordmark">Aerio</span>
     </a>
 
-    <a class="top-cta" href="https://aerio.works">Get Started</a>
+    <div class="header-right">
+      <a class="top-link" href="https://orcha-v.vercel.app">Sign in</a>
+      <a class="top-cta" href="https://orcha-v.vercel.app">Get started</a>
+    </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="eyebrow">The project layer between your tools</div>
+      <div class="eyebrow">The connective layer for great work</div>
 
-      <h1>Bring everything together</h1>
-      <p class="tagline">See what’s possible</p>
-
-      <p class="hero-kicker">Turn scattered project work into clear decisions</p>
+      <h1>
+        People, organizations,<br/>
+        and tools — <span class="accent">working as one.</span>
+      </h1>
 
       <p class="hero-copy">
-        Aerio sits between your tools, teams, and organizations — collecting inputs,
-        organizing the work, centralizing findings, and turning project activity into clear output.
+        Aerio isn't another tool to add to your stack. It's the <strong>connective tissue</strong> between
+        the ones you already use, the people you bring in, and the data scattered across all of it.
+        One project. One source of truth. The intelligence to actually do something with it.
       </p>
 
-      <p class="positioning">
-        Simple in use. Built for serious work across teams, tools, and organizations
-      </p>
-
-      <a class="primary-btn" href="#how-it-works">See how it works</a>
+      <div>
+        <a class="primary-btn" href="https://orcha-v.vercel.app">Start free</a>
+        <a class="secondary-btn" href="#how-it-works">See how it works</a>
+      </div>
     </section>
 
     <div class="visual-section">
-      <div class="visual" aria-label="Scattered project inputs become centralized findings">
+      <div class="visual" aria-label="Scattered project inputs become cited findings">
         <div class="input-stack">
-          <div class="input-card">Files from project folders</div>
-          <div class="input-card">Updates from contributors</div>
-          <div class="input-card">Tasks across teams</div>
-          <div class="input-card">Findings from workstreams</div>
+          <div class="input-card">PDFs, decks, and spreadsheets</div>
+          <div class="input-card">Google Docs, Dropbox, OneDrive</div>
+          <div class="input-card">Tasks, meetings, deliverables</div>
+          <div class="input-card">People across organizations</div>
         </div>
 
         <div class="flow">→</div>
 
         <div class="output-card">
-          <h3>Centralized findings</h3>
-          <p>Inputs become decisions, deliverables, and next steps</p>
+          <h3>One project. One source of truth.</h3>
+          <p>Cited answers, drafted deliverables, decisions you can ship.</p>
           <div class="nuggets">
             <span></span><span></span><span></span>
           </div>
@@ -476,104 +529,111 @@
 
     <section class="soft">
       <div class="inner">
-        <h2>Not another system to replace your tools</h2>
+        <h2>Not another tool to add. <span class="accent">The layer between the ones you already use.</span></h2>
         <p class="section-copy">
-          Aerio is the space between them — where requests, files, updates, findings,
-          and decisions are coordinated. Your existing tools still exist. Aerio gives
-          the project a structured layer that connects the work.
+          Your existing tools still exist. Aerio gives the project a structured layer
+          that connects them — pulling in the files, the people, and the work,
+          and turning it into something usable.
         </p>
       </div>
     </section>
 
-    <section>
-      <h2>Built for coordination-heavy work</h2>
+    <section id="how-it-works">
+      <h2>How Aerio works</h2>
+      <p class="section-copy">Three steps. Minutes, not weeks.</p>
 
       <div class="grid-3">
-        <div class="card">
-          <h3>Due diligence & M&A</h3>
-          <p>Manage requests, track inputs, and consolidate findings across parties.</p>
+        <div class="step-card">
+          <div class="step-num">01 / Launch</div>
+          <h3>Stand a project up in minutes.</h3>
+          <p>
+            Describe the work in plain prose. AI extracts the tasks. Invite anyone — inside the
+            org or out — by email. They click a magic link and they're in. No accounts, no
+            friction, no welcome flow.
+          </p>
         </div>
 
-        <div class="card">
-          <h3>Finance & consulting</h3>
-          <p>Coordinate teams, collect data, and produce usable project output.</p>
+        <div class="step-card">
+          <div class="step-num">02 / Surface</div>
+          <h3>Every file and link, search-ready.</h3>
+          <p>
+            Pull in PDFs, decks, spreadsheets, Google Docs, Dropbox, OneDrive — any source.
+            Each is auto-summarized at upload, so the next question you ask is already
+            prepared for.
+          </p>
         </div>
 
-        <div class="card">
-          <h3>Events & operations</h3>
-          <p>Keep vendors, tasks, files, and updates aligned in one clear process.</p>
+        <div class="step-card">
+          <div class="step-num">03 / Synthesize</div>
+          <h3>Ask anything. Get cited answers.</h3>
+          <p>
+            Aim Analyze at any project, pick the data, get a grounded answer. Every claim
+            traces back to its source — server-enforced. Stack analyses on top of each
+            other to go deeper, faster.
+          </p>
         </div>
       </div>
     </section>
 
     <section class="soft">
       <div class="inner">
-        <h2>What you get</h2>
+        <div class="feature-eyebrow">Built for how teams actually work</div>
+        <h2>The details that <span class="accent">make the work move.</span></h2>
 
-        <div class="grid-5">
-          <div class="card value-card">
-            <strong>Inputs, files, and updates in one place</strong>
+        <div class="grid-features">
+          <div class="feature">
+            <strong>Cross-org by design</strong>
+            <p>One identity, many organizations. Switch context without re-logging.</p>
           </div>
 
-          <div class="card value-card">
-            <strong>Clear ownership of who is responsible</strong>
+          <div class="feature">
+            <strong>Tasks, meetings, deliverables</strong>
+            <p>Three native types covering the full arc of a project.</p>
           </div>
 
-          <div class="card value-card">
-            <strong>Visibility into what’s done and next</strong>
+          <div class="feature">
+            <strong>Smart synthesis routing</strong>
+            <p>Picks the right model per question — Haiku, Sonnet, or Opus.</p>
           </div>
 
-          <div class="card value-card">
-            <strong>Centralized findings and decisions</strong>
+          <div class="feature">
+            <strong>Cited or it didn't happen</strong>
+            <p>No claim ships without a source. Enforced server-side, every run.</p>
           </div>
 
-          <div class="card value-card">
-            <strong>Output that is usable and complete</strong>
+          <div class="feature">
+            <strong>Universal extraction</strong>
+            <p>PDF, Word, Excel, PPT, RTF, HTML, ZIP — all read the same way.</p>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section id="how-it-works">
-      <h2>How it works</h2>
+          <div class="feature">
+            <strong>Auth-wall aware</strong>
+            <p>Locked links flagged at upload, before they break a search.</p>
+          </div>
 
-      <div class="grid-4">
-        <div class="card">
-          <div class="step-num">1</div>
-          <h3>Set the structure</h3>
-          <p>Define the project, scope, people, and key steps.</p>
-        </div>
+          <div class="feature">
+            <strong>Long runs, live progress</strong>
+            <p>Multi-minute analyses stream step-by-step. Nothing times out.</p>
+          </div>
 
-        <div class="card">
-          <div class="step-num">2</div>
-          <h3>Bring in people</h3>
-          <p>Add contributors across teams and organizations.</p>
-        </div>
-
-        <div class="card">
-          <div class="step-num">3</div>
-          <h3>Collect the work</h3>
-          <p>Gather files, updates, inputs, and requests in one flow.</p>
-        </div>
-
-        <div class="card">
-          <div class="step-num">4</div>
-          <h3>Turn it into output</h3>
-          <p>Create clear findings, decisions, and deliverables.</p>
+          <div class="feature">
+            <strong>Deliverables on demand</strong>
+            <p>Generate decks, docs, and sheets drafted from your real project data.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="closing">
-      <h2>Not another tool. The layer that makes them work together</h2>
-      <a class="primary-btn" href="https://aerio.works">Get Started</a>
+      <h2>Less stack. <span class="accent">More signal.</span></h2>
+      <a class="primary-btn" href="https://orcha-v.vercel.app">Start free</a>
     </section>
   </main>
 
   <footer>
     <div class="inner">
       <span>© 2026 Aerio</span>
-      <span>Bring everything together. See what’s possible.</span>
+      <span>AERIO.WORK</span>
     </div>
   </footer>
 </body>
